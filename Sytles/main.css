@@ -1,0 +1,13 @@
+html,
+body {
+  margin: 0;
+  font-family: "Rajdhani", sans-serif;
+}
+
+.page-container {
+  display: flex;
+}
+.page-container .main-container {
+  margin: auto;
+  background-color: pink;
+}/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,21 @@
+html,
+body {
+  margin: 0;
+}
+
+.sidebar-container {
+  background-color: whitesmoke;
+  width: 220px;
+  padding-top: 20px;
+}
+.sidebar-container .sidebar-heading {
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.scrollingDiv {
+  width: 300px;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+}/*# sourceMappingURL=sidebar.css.map */
