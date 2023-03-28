@@ -3,21 +3,22 @@ body {
   margin: 0;
 }
 
-.sidebar-container {
-  background-color: whitesmoke;
+.sidebar {
+  background-color: rgb(0, 0, 0);
+  color: rgb(239, 184, 193);
   width: 220px;
-  padding-top: 20px;
 
-  .sidebar-heading {
-    display: flex;
-    justify-content: center;
-    font-size: 20px;
+  .sidebarTop {
+    height: 50px;
+    text-align: center;
   }
 }
 
 .scrollingDiv {
   width: 300px;
-  overflow-y: scroll;
-  scrollbar-color: pink
-  scrollbar-width: thin;
+  height: 100%;
+}
+
+.users-container {
+  text-align: center;
 }

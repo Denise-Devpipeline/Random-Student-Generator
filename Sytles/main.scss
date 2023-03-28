@@ -2,12 +2,17 @@ html,
 body {
   margin: 0;
   font-family: "Rajdhani", sans-serif;
+  height: 100%;
 }
 
 .page-container {
   display: flex;
-  .main-container {
-    margin: auto;
-    background-color: pink;
+  margin: auto;
+  background-color: rgb(215, 110, 128);
+  height: 100%;
+
+  .users-container {
+    height: 100%;
+    overflow: scroll;
   }
 }
