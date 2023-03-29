@@ -7,11 +7,13 @@ body {
 
 .page-container {
   display: flex;
-  margin: auto;
   background-color: rgb(215, 110, 128);
-  height: 100%;
 }
-.page-container .users-container {
-  height: 100%;
-  overflow: scroll;
+.page-container .main-container {
+  width: 100%;
+  text-align: center;
+  padding-top: 20%;
+}
+.page-container .main-container h1 {
+  font-size: 50px;
 }/*# sourceMappingURL=main.css.map */

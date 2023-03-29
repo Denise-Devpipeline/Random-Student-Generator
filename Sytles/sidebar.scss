@@ -6,19 +6,15 @@ body {
 .sidebar {
   background-color: rgb(0, 0, 0);
   color: rgb(239, 184, 193);
-  width: 220px;
+  width: 250px;
+
+  .users-container {
+    text-align: center;
+    scrollbar-width: 40px;
+  }
 
   .sidebarTop {
     height: 50px;
     text-align: center;
   }
-}
-
-.scrollingDiv {
-  width: 300px;
-  height: 100%;
-}
-
-.users-container {
-  text-align: center;
 }
