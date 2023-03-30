@@ -100,36 +100,69 @@ const mockData = {
     },
   ],
 };
-const usersEl = document.querySelector(".users-container");
+// Fetching data
+async function grabStudents() {
+  try {
+    const response = await fetch("MOCK_DATA.json", {}).then((res) =>
+      res.json()
+    );
 
-//FETCH DATA
-// fetch(mockData.json)
-//   .then((response) => response.json())
-//   .then((data) => {
-//     const firstName = data.results[0].name.first;
-//     const lastName = data.results[0].name.last;
-//     const randomIndex = math.floor(math.random());
-
-//     if (randomIndex === 0) {
-//       console.log("random first name: ${firstName}");
-//     } else {
-//       console.log("random last name: ${lastName}");
-//     }
-//   })
-//   .catch((error) => console.error(error));
+    return response;
+  } catch (err) {
+    console.error(err);
+  }
+}
 // Weight buttons (Do I need to add in a new list of students? or can I use the mockData from)
-const studentArray = [];
-mockData.users.forEach((oUser) => {
-  createUsers(oUser);
-});
+const buttonWeight = {};
+function add() {
+  const plusSymbol = document.getElementById("plusSymbol");
+  const minus = parseInt(plusSymbol.value) + 1;
+  plusSymbol.value = minusSymbol;
 
-function firstAndLast(oUserData) {
-  return `${
-    oUserData.first_name[0].toUpperCase() + oUserData.first_name.slice(1)
-  } ${oUserData.last_name.slice(0, 1).toUpperCase()} : `;
+  weightVal(plusSymbol);
 }
 
-function createUsers(oUser) {
+function subtract() {
+  const plus = document.getElementById("plusSymbol");
+  const minus = parseInt(plusSymbol.value) - 1;
+  plus.value = minusSymbol;
+}
+
+// let animateMe = document.getElementById("animateMe");
+
+// function animateChars(ehchOne) {
+//   let echOnelements = element.querySelector("h1");
+
+// }
+// animateChars(animateMe);
+
+function firstAndLast(oMockData) {
+  return `${
+    oMockData.first_name[0].toUpperCase() + oMockData.first_name.slice(1)
+  } ${oMockData.last_name.slice(0, 1).toUpperCase()} : `;
+}
+
+const studentArray = [];
+mockData.users.forEach((user) => {
+  createUsers(user);
+});
+
+function weightVal(animateName) {
+  document.getElementById("main-container").innerHTML = val * val;
+}
+
+function onClick(somethingGoesHere) {
+  let addBtn, subBtn, result;
+  addBtn = document.getElementById("addButton").value = "+";
+  subBtn = document.getElementById("subButton").value = "-";
+  document.getElementById("onClick");
+  generatorButton.addEventListener("click", onClick);
+
+  const generatorButton = document.getElementById("generatorButton");
+  generatorButton.addEventListener("click", (e) => {});
+}
+
+function createUsers(user) {
   const usersContainer = document.createElement("div");
   const btnContainer = document.createElement("div");
   const addBtn = document.createElement("button");
@@ -137,7 +170,11 @@ function createUsers(oUser) {
   const nameHeader = document.createElement("h3");
   const weightSpan = document.createElement("span");
 
-  const nameNode = document.createTextNode(firstAndLast(oUser));
+  const nameNode = document.createTextNode(firstAndLast(user));
+
+  const spanNumber = document.createTextNode("1");
+
+  console.log(nameHeader, usersContainer);
 
   // User Data
   usersContainer.classList.add("user-wrapper");
@@ -154,13 +191,7 @@ function createUsers(oUser) {
   addBtn.append("+");
   subBtn.append("-");
   usersContainer.appendChild(btnContainer);
-
-  addBtn.addEventListener("click", function () {
-    console.log(weightSpan);
-  });
-  subBtn.addEventListener("click", function () {
-    console.log("anything -");
-  });
+  const usersEl = document.querySelector(".users-container");
 
   usersEl.appendChild(usersContainer);
 }
