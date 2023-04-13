@@ -101,7 +101,8 @@ const mockData = {
   ],
 };
 const usersEl = document.querySelector(".users-container");
-
+const genBtn = document.querySelector("#generatorButton");
+const eUserChoice = document.querySelector("#animateMe");
 //FETCH DATA
 // fetch(mockData.json)
 //   .then((response) => response.json())
@@ -118,7 +119,7 @@ const usersEl = document.querySelector(".users-container");
 //   })
 //   .catch((error) => console.error(error));
 // Weight buttons (Do I need to add in a new list of students? or can I use the mockData from)
-const studentArray = [];
+const aStudents = JSON.parse(JSON.stringify(mockData.users));
 mockData.users.forEach((oUser) => {
   createUsers(oUser);
 });
@@ -156,43 +157,42 @@ function createUsers(oUser) {
   usersContainer.appendChild(btnContainer);
 
   addBtn.addEventListener("click", function () {
-    console.log(weightSpan);
+    let nCurrentWeight = Number(weightSpan.textContent);
+    weightSpan.textContent = nCurrentWeight + 1;
+    aStudents.push(oUser);
   });
   subBtn.addEventListener("click", function () {
-    console.log("anything -");
+    let nCurrentWeight = Number(weightSpan.textContent);
+    if (nCurrentWeight <= 1) {
+      return;
+    }
+    weightSpan.textContent = nCurrentWeight - 1;
   });
 
   usersEl.appendChild(usersContainer);
 }
 
+let shuffleSet;
+
 function shuffleName() {
-  const theIndex = math.floor(math.random() * mockData.users.length);
-  const indexStudent = mockData.users[indexStudent];
-  usersContainer.textContent = firstAndLast(indexStudent);
+  const indexStudentRandom = Math.floor(Math.random() * aStudents.length);
+  const oStudent = aStudents[indexStudentRandom];
+  eUserChoice.textContent = firstAndLast(oStudent);
 }
 
 function shuffleTime() {
-  shuffleSet = shuffleTime(() => {
+  shuffleSet = setInterval(() => {
     shuffleName();
-  }, 5000);
-  return new promise((res, reje) => {
+  }, 100);
+  return new Promise((res, reje) => {
     setTimeout(() => {
-      clearSettings(shuffleSet);
-    });
+      res();
+    }, 3000);
+  }).then(function () {
+    clearInterval(shuffleSet);
   });
 }
 
-// let plusSymbol = document.querySelector("#plusSymbol");
-// plusSymbol.addEventListener("click", function () {
-//   let output = document.querySelector("output");
-//   let result = parseInt(output.innerText) + 1;
-
-//   output.innerText = result;
-// });
-
-//   customerData.forEach (x =>  {
-//     console.log()
-
-// fetch("MOCK_DATA.json")
-//   .then((response) => response.json())
-//   .then((data) => console.log(data));
+genBtn.addEventListener("click", function () {
+  shuffleTime();
+});
